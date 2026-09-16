@@ -1,6 +1,6 @@
 # Skills Test
 from pyscript import display, document
-# INDEX.HTML
+
 #Calculate for receipt
 def calc_receipt(e):
      # Get customer name
@@ -34,21 +34,21 @@ def calc_receipt(e):
           target='receipt')
 
 
-# SKU.HTML
-#Calculate for SKU
+# Calculate for SKU
 def calc_sku(e):
-     
      # Get category code
      categoryCode = document.getElementById('Cat').value
 
      # Get product code
      productCode = document.getElementById('prod-name').value
 
-     # Get stock amount
+     # Get stock code
      theStock = document.getElementById('stoc-quan').value or '0'
 
-     #Clear previous output
-     document.getElementById('sku').innerHTML= " "
+     document.getElementById('sku').innerHTML = ""
 
      # Show sku output
-     display(f'{categoryCode}-{productCode}-{theStock}', target='sku')
+     display(
+          f'{categoryCode}-{productCode}-{theStock}',
+          target='sku'
+     )
