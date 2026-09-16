@@ -9,23 +9,16 @@ def calc_receipt(e):
      #Clear previous output
      document.getElementById('receipt').innerHTML= " "
 
-     subtotal = 0
-
-     # Check selected items and calculate subtotal
-     if document.getElementById('iced-coffee').checked:
-          subtotal = subtotal + 120
-     if document.getElementById('latte').checked:
-          subtotal = subtotal + 150
-     if document.getElementById('matcha').checked:
-          subtotal = subtotal + 160
-     if document.getElementById('choco-mousse').checked:
-          subtotal = subtotal + 120
-     if document.getElementById('caramel').checked:
-          subtotal = subtotal + 120
-     if document.getElementById('water').checked:
-               subtotal = subtotal + 30
-     if document.getElementById('cake').checked:
-          subtotal = subtotal + 130
+     # Calculate subtotal
+     subtotal = (
+     120 * document.getElementById('iced-coffee').checked
+     + 150 * document.getElementById('latte').checked
+     + 160 * document.getElementById('matcha').checked
+     + 120 * document.getElementById('choco-mousse').checked
+     + 120 * document.getElementById('caramel').checked
+     + 30 * document.getElementById('water').checked
+     + 130 * document.getElementById('cake').checked
+     )
 
      # Calculate VAT and total
      vat = subtotal * 0.12
@@ -44,39 +37,14 @@ def calc_receipt(e):
 # SKU.HTML
 #Calculate for SKU
 def calc_sku(e):
-     # Get category name
-     theCategory = document.getElementById('Cat').value
+     
+     # Get category code
+     categoryCode = document.getElementById('Cat').value
 
-     # SKU of category
-     if theCategory == "perishables":
-          categoryCode = "PER"
-     elif theCategory == "non-perishables":
-          categoryCode = "NPR"
-     elif theCategory == "pastries":
-          categoryCode = "PAS"
-     elif theCategory == "beverages":
-          categoryCode = "BEV"
+     # Get product code
+     productCode = document.getElementById('prod-name').value
 
-     # Get product name (can be e.g. strawberry, vanilla (add-ons of the drinks), etc.)
-     theProduct = document.getElementById('prod-name').value
-
-     # SKU of product
-     if theProduct == "iced-coffee":
-          productCode = "ICF"
-     elif theProduct == "latte":
-          productCode = "LAT"
-     elif theProduct == "matcha":
-          productCode = "MAT"
-     elif theProduct == "chocolate-mousse":
-          productCode = "CHM"
-     elif theProduct == "caramel-macchiato":
-          productCode = "CRM"
-     elif theProduct == "bottled-water":
-          productCode = "BTW"
-     elif theProduct == "chocolate-cake":
-          productCode = "CHC"
-
-     # Input stock amount
+     # Get stock amount
      theStock = document.getElementById('stoc-quan').value or '0'
 
      #Clear previous output
